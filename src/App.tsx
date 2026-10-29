@@ -180,31 +180,34 @@ export default function App() {
           onTimeUpdate={handleTimeUpdate}
         />
 
-        {/* Native Banner Ad placed right in the middle */}
-        <div
-          id="container-d671fcbc49e8d1d6f0fb70185a530c8d"
-          className="native-banner-play-ad"
-        />
+        {/* Play button with Ad placed right in its exact middle */}
+        <div className="play-center-box">
+          {/* Ad Container right in the middle */}
+          <div
+            id="container-d671fcbc49e8d1d6f0fb70185a530c8d"
+            className="play-inner-ad"
+          />
 
-        {/* Play Button anchored directly in the dead-center */}
-        <button
-          className={`play ${isPlaying ? 'is-playing' : ''}`}
-          id="playButton"
-          onClick={handleTogglePlay}
-          aria-label={isPlaying ? 'Pause demo' : 'Play video'}
-          title={isPlaying ? 'Pause' : 'Play'}
-        >
-          <svg id="playIcon" viewBox="0 0 32 32" aria-hidden="true">
-            {isPlaying ? (
-              <path d="M8 5h5v22H8zM19 5h5v22h-5z" fill="white" />
-            ) : (
-              <path
-                d="M9 5.8c0-1.8 2-2.8 3.5-1.8l16 10.2a2.2 2.2 0 0 1 0 3.6l-16 10.2A2.2 2.2 0 0 1 9 26.2V5.8Z"
-                fill="white"
-              />
-            )}
-          </svg>
-        </button>
+          {/* Play Button anchored directly in the dead-center */}
+          <button
+            className={`play ${isPlaying ? 'is-playing' : ''}`}
+            id="playButton"
+            onClick={handleTogglePlay}
+            aria-label={isPlaying ? 'Pause demo' : 'Play video'}
+            title={isPlaying ? 'Pause' : 'Play'}
+          >
+            <svg id="playIcon" viewBox="0 0 32 32" aria-hidden="true">
+              {isPlaying ? (
+                <path d="M8 5h5v22H8zM19 5h5v22h-5z" fill="white" />
+              ) : (
+                <path
+                  d="M9 5.8c0-1.8 2-2.8 3.5-1.8l16 10.2a2.2 2.2 0 0 1 0 3.6l-16 10.2A2.2 2.2 0 0 1 9 26.2V5.8Z"
+                  fill="white"
+                />
+              )}
+            </svg>
+          </button>
+        </div>
 
         <div className={`player-status ${statusVisible ? 'visible' : ''}`} id="status">
           <span>{statusText}</span>
