@@ -273,17 +273,6 @@ export default function App() {
           </button>
         </div>
       </section>
-
-      {/* Native Ad Code Box */}
-      <h2 className="ad-title">Native Ad Code (Place Inside the Box)</h2>
-      <div className="ad-box">
-        <div id="native-ad-container">
-          <div
-            id="container-d671fcbc49e8d1d6f0fb70185a530c8d-secondary"
-            className="w-full flex items-center justify-center min-h-[90px] text-center text-xs text-[#536b8e]"
-          />
-        </div>
-      </div>
     </main>
   );
 }
