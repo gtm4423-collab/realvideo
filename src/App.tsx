@@ -206,10 +206,10 @@ export default function App() {
               )}
             </svg>
           </button>
-        </div>
 
-        <div className={`player-status ${statusVisible ? 'visible' : ''}`} id="status">
-          <span>{statusText}</span>
+          <div className={`player-status ${statusVisible ? 'visible' : ''}`} id="status">
+            <span>{statusText}</span>
+          </div>
         </div>
 
         <div className="controls">
