@@ -103,39 +103,30 @@ body {
   background: #fff;
 }
 
-.play-wrapper {
-  position: absolute;
-  left: 50%;
-  top: 26%;
-  transform: translate(-50%, -15%);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  z-index: 10;
-  max-width: 95%;
-  width: 100%;
-  pointer-events: auto;
-}
-
-/* Prominent native banner ad placed right in the middle above/on the play button */
+/* Native Banner Ad placed right in the center */
 .native-banner-play-ad,
 #container-d671fcbc49e8d1d6f0fb70185a530c8d {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
   width: auto;
   min-width: 260px;
   max-width: 330px;
-  min-height: 52px;
-  margin: 0 auto 10px;
   display: flex;
   align-items: center;
   justify-content: center;
   overflow: visible;
   pointer-events: auto;
-  z-index: 15;
+  z-index: 10;
 }
 
+/* Play button locked in the exact dead-center (never shifts when ad loads) */
 .play {
-  position: relative;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
   width: 68px;
   height: 68px;
   border: 0;
@@ -144,13 +135,13 @@ body {
   background: linear-gradient(145deg, #3189ff, #0968f1);
   display: grid;
   place-items: center;
-  box-shadow: 0 5px 14px rgba(24, 120, 249, 0.13);
+  box-shadow: 0 5px 14px rgba(24, 120, 249, 0.25);
   transition: transform 0.18s, filter 0.18s;
-  z-index: 5;
+  z-index: 20;
 }
 
 .play:hover {
-  transform: scale(1.05);
+  transform: translate(-50%, -50%) scale(1.05);
   filter: brightness(1.04);
 }
 
@@ -165,14 +156,17 @@ body {
 }
 
 .player-status {
-  margin-top: 8px;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: calc(50% + 48px);
   text-align: center;
   font-size: 13px;
   color: #ffffff;
   opacity: 0;
   transition: opacity 0.2s;
   pointer-events: none;
-  z-index: 4;
+  z-index: 15;
 }
 
 .player-status.visible {
@@ -303,30 +297,22 @@ body {
     height: 6px;
     margin-right: 4px;
   }
-  .play-wrapper {
-    top: 24%;
-    transform: translate(-50%, -10%);
-    max-width: 96%;
-  }
   .native-banner-play-ad,
   #container-d671fcbc49e8d1d6f0fb70185a530c8d {
     width: auto;
-    min-width: 240px;
-    max-width: 300px;
-    min-height: 48px;
-    transform: none;
-    margin-bottom: 6px;
+    min-width: 230px;
+    max-width: 290px;
   }
   .play {
-    width: 48px;
-    height: 48px;
+    width: 50px;
+    height: 50px;
   }
   .play svg {
-    width: 20px;
-    height: 20px;
+    width: 21px;
+    height: 21px;
   }
   .player-status {
-    margin-top: 5px;
+    top: calc(50% + 38px);
     font-size: 11px;
   }
   .controls {
