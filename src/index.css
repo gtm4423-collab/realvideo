@@ -1,0 +1,305 @@
+@import "tailwindcss";
+
+:root {
+  --blue: #1878f9;
+  --navy: #0c1b36;
+  --muted: #536b8e;
+  --line: #dce6f4;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  padding: 48px 18px 56px;
+  background: linear-gradient(135deg, #fff 0%, #fbfdff 100%);
+  color: var(--navy);
+  font-family: Inter, Arial, Helvetica, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+.page {
+  width: min(100%, 700px);
+  margin: 0 auto;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 13px;
+  margin: 0 auto 76px;
+}
+
+.brand-mark {
+  width: 57px;
+  height: 57px;
+  display: grid;
+  place-items: center;
+}
+
+.brand-mark svg {
+  width: 100%;
+  height: 100%;
+  filter: drop-shadow(0 3px 5px #1878f92b);
+}
+
+.brand-name {
+  font-size: clamp(30px, 5vw, 52px);
+  font-weight: 800;
+  letter-spacing: -2px;
+  line-height: 1;
+}
+
+.brand-name span {
+  color: var(--blue);
+}
+
+.player {
+  width: 100%;
+  aspect-ratio: 16/9;
+  position: relative;
+  overflow: hidden;
+  border: 2px solid var(--line);
+  border-radius: 13px;
+  background: #000;
+  box-shadow: 0 8px 28px rgba(23, 76, 145, 0.035);
+}
+
+.player video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  cursor: pointer;
+}
+
+.live {
+  position: absolute;
+  top: 15px;
+  left: 20px;
+  z-index: 2;
+  padding: 7px 11px;
+  border-radius: 9px;
+  color: #fff;
+  background: #ff2538;
+  font-size: 18px;
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  pointer-events: none;
+  line-height: 1;
+}
+
+.live:before {
+  content: "";
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  margin-right: 6px;
+  border-radius: 50%;
+  background: #fff;
+}
+
+.play {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 68px;
+  height: 68px;
+  border: 0;
+  border-radius: 50%;
+  cursor: pointer;
+  background: linear-gradient(145deg, #3189ff, #0968f1);
+  display: grid;
+  place-items: center;
+  box-shadow: 0 5px 14px rgba(24, 120, 249, 0.13);
+  transition: transform 0.18s, filter 0.18s;
+  z-index: 5;
+}
+
+.play:hover {
+  transform: translate(-50%, -50%) scale(1.05);
+  filter: brightness(1.04);
+}
+
+.play svg {
+  width: 28px;
+  height: 28px;
+  margin-left: 4px;
+}
+
+.play.is-playing svg {
+  margin-left: 0;
+}
+
+.player-status {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: calc(50% + 48px);
+  text-align: center;
+  font-size: 13px;
+  color: #ffffff;
+  opacity: 0;
+  transition: opacity 0.2s;
+  pointer-events: none;
+  z-index: 4;
+}
+
+.player-status.visible {
+  opacity: 1;
+}
+
+.player-status span {
+  background: rgba(0, 0, 0, 0.6);
+  padding: 4px 12px;
+  border-radius: 12px;
+  backdrop-filter: blur(4px);
+}
+
+.controls {
+  position: absolute;
+  bottom: 15px;
+  left: 24px;
+  right: 22px;
+  display: flex;
+  align-items: center;
+  gap: 17px;
+  color: #536b8e;
+  z-index: 5;
+}
+
+.control-icon {
+  width: 24px;
+  height: 24px;
+  flex: 0 0 auto;
+  display: grid;
+  place-items: center;
+  border: 0;
+  background: none;
+  padding: 0;
+  color: #fff;
+  cursor: pointer;
+  filter: drop-shadow(0 1px 2px rgba(0,0,0,0.5));
+}
+
+.control-icon svg {
+  width: 22px;
+  height: 22px;
+  fill: currentColor;
+}
+
+.volume {
+  width: 50px;
+  height: 13px;
+  accent-color: var(--blue);
+  cursor: pointer;
+}
+
+.track {
+  height: 5px;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.35);
+  flex: 1;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.track-fill {
+  height: 100%;
+  width: 3%;
+  background: var(--blue);
+  border-radius: 10px;
+  transition: width 0.1s linear;
+}
+
+.spacer {
+  flex: 0 0 12px;
+}
+
+.ad-title {
+  margin: 33px 0 9px;
+  text-align: center;
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--navy);
+}
+
+.ad-box {
+  width: min(100%, 512px);
+  margin: 0 auto;
+  padding: 18px 23px;
+  border: 1px solid #dce6f4;
+  border-radius: 12px;
+  background: linear-gradient(130deg, #f8fbff, #f3f7fc);
+  overflow: auto;
+  min-height: 110px;
+}
+
+@media (max-width: 520px) {
+  body {
+    padding: 30px 14px 36px;
+  }
+  .brand {
+    margin-bottom: 46px;
+    gap: 9px;
+  }
+  .brand-mark {
+    width: 43px;
+    height: 43px;
+  }
+  .brand-name {
+    letter-spacing: -1.2px;
+  }
+  .live {
+    top: 10px;
+    left: 11px;
+    padding: 5px 8px;
+    border-radius: 7px;
+    font-size: 12px;
+  }
+  .live:before {
+    width: 7px;
+    height: 7px;
+    margin-right: 4px;
+  }
+  .play {
+    width: 54px;
+    height: 54px;
+  }
+  .play svg {
+    width: 23px;
+    height: 23px;
+  }
+  .controls {
+    bottom: 10px;
+    left: 12px;
+    right: 12px;
+    gap: 10px;
+  }
+  .control-icon {
+    width: 19px;
+    height: 19px;
+  }
+  .control-icon svg {
+    width: 19px;
+    height: 19px;
+  }
+  .volume {
+    width: 36px;
+  }
+  .spacer {
+    flex-basis: 0;
+  }
+  .ad-title {
+    font-size: 15px;
+    margin-top: 25px;
+  }
+  .ad-box {
+    padding: 13px 14px;
+  }
+}
