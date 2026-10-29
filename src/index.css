@@ -103,22 +103,42 @@ body {
   background: #fff;
 }
 
-/* Native Banner Ad placed right in the center */
+/* Full Frame Ad Container — Covers the entire player frame */
 .native-banner-play-ad,
 #container-d671fcbc49e8d1d6f0fb70185a530c8d {
   position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  width: auto;
-  min-width: 260px;
-  max-width: 330px;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  max-width: 100%;
+  max-height: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
-  overflow: visible;
+  overflow: hidden;
   pointer-events: auto;
   z-index: 10;
+}
+
+#container-d671fcbc49e8d1d6f0fb70185a530c8d > * {
+  width: 100% !important;
+  height: 100% !important;
+  max-width: 100% !important;
+  max-height: 100% !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+#container-d671fcbc49e8d1d6f0fb70185a530c8d iframe,
+#container-d671fcbc49e8d1d6f0fb70185a530c8d a,
+#container-d671fcbc49e8d1d6f0fb70185a530c8d img {
+  width: 100% !important;
+  height: 100% !important;
+  max-width: 100% !important;
+  max-height: 100% !important;
+  object-fit: cover !important;
+  border: 0 !important;
 }
 
 /* Play button locked in the exact dead-center (never shifts when ad loads) */
@@ -299,9 +319,9 @@ body {
   }
   .native-banner-play-ad,
   #container-d671fcbc49e8d1d6f0fb70185a530c8d {
-    width: auto;
-    min-width: 230px;
-    max-width: 290px;
+    width: 100%;
+    height: 100%;
+    inset: 0;
   }
   .play {
     width: 50px;
