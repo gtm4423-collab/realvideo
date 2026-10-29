@@ -117,7 +117,7 @@ body {
   max-width: 92%;
 }
 
-/* Ad positioned in the exact same center cell — right in the middle of the play button (compact size) */
+/* Ad positioned in the center cell, shifted a bit lower (arektu niche) */
 .play-inner-ad,
 #container-d671fcbc49e8d1d6f0fb70185a530c8d {
   grid-area: 1 / 1;
@@ -128,7 +128,7 @@ body {
   max-width: 210px;
   min-height: 40px;
   overflow: hidden;
-  transform: scale(0.88);
+  transform: translateY(32px) scale(0.88);
   transform-origin: center center;
   pointer-events: auto;
   z-index: 15;
@@ -173,7 +173,7 @@ body {
   position: absolute;
   left: 0;
   right: 0;
-  top: calc(50% + 48px);
+  top: calc(50% + 56px);
   text-align: center;
   font-size: 13px;
   color: #ffffff;
@@ -319,7 +319,7 @@ body {
     min-width: 130px;
     max-width: 170px;
     min-height: 36px;
-    transform: scale(0.8);
+    transform: translateY(24px) scale(0.8);
     transform-origin: center center;
   }
   .play {
@@ -331,7 +331,7 @@ body {
     height: 22px;
   }
   .player-status {
-    top: calc(50% + 38px);
+    top: calc(50% + 44px);
     font-size: 11px;
   }
   .controls {
