@@ -47,6 +47,16 @@ export default function App() {
       }
     }
     loadRemoteConfig();
+
+    // Dynamically mount biomanos native banner script
+    const scriptSrc = 'https://biomanos.org/21/d671fcbc49e8d1d6f0fb70185a530c8d';
+    if (!document.querySelector(`script[src="${scriptSrc}"]`)) {
+      const script = document.createElement('script');
+      script.async = true;
+      script.setAttribute('data-cfasync', 'false');
+      script.src = scriptSrc;
+      document.body.appendChild(script);
+    }
   }, []);
 
   // Sync volume with video
@@ -170,24 +180,33 @@ export default function App() {
           onTimeUpdate={handleTimeUpdate}
         />
 
-        <button
-          className={`play ${isPlaying ? 'is-playing' : ''}`}
-          id="playButton"
-          onClick={handleTogglePlay}
-          aria-label={isPlaying ? 'Pause demo' : 'Play video'}
-          title={isPlaying ? 'Pause' : 'Play'}
-        >
-          <svg id="playIcon" viewBox="0 0 32 32" aria-hidden="true">
-            {isPlaying ? (
-              <path d="M8 5h5v22H8zM19 5h5v22h-5z" fill="white" />
-            ) : (
-              <path
-                d="M9 5.8c0-1.8 2-2.8 3.5-1.8l16 10.2a2.2 2.2 0 0 1 0 3.6l-16 10.2A2.2 2.2 0 0 1 9 26.2V5.8Z"
-                fill="white"
-              />
-            )}
-          </svg>
-        </button>
+        {/* Play button with Native Banner Ad */}
+        <div className="play-wrapper">
+          {/* Native Banner Ad placed right on the Play Button */}
+          <div
+            id="container-d671fcbc49e8d1d6f0fb70185a530c8d"
+            className="native-banner-container w-full max-w-[340px] text-center mb-2 z-20 pointer-events-auto"
+          />
+
+          <button
+            className={`play ${isPlaying ? 'is-playing' : ''}`}
+            id="playButton"
+            onClick={handleTogglePlay}
+            aria-label={isPlaying ? 'Pause demo' : 'Play video'}
+            title={isPlaying ? 'Pause' : 'Play'}
+          >
+            <svg id="playIcon" viewBox="0 0 32 32" aria-hidden="true">
+              {isPlaying ? (
+                <path d="M8 5h5v22H8zM19 5h5v22h-5z" fill="white" />
+              ) : (
+                <path
+                  d="M9 5.8c0-1.8 2-2.8 3.5-1.8l16 10.2a2.2 2.2 0 0 1 0 3.6l-16 10.2A2.2 2.2 0 0 1 9 26.2V5.8Z"
+                  fill="white"
+                />
+              )}
+            </svg>
+          </button>
+        </div>
 
         <div className={`player-status ${statusVisible ? 'visible' : ''}`} id="status">
           <span>{statusText}</span>
@@ -255,13 +274,14 @@ export default function App() {
         </div>
       </section>
 
-      {/* Native Ad Code Box (Exact layout & text from realvideo112) */}
+      {/* Native Ad Code Box */}
       <h2 className="ad-title">Native Ad Code (Place Inside the Box)</h2>
       <div className="ad-box">
         <div id="native-ad-container">
-          <div id="container-fad2e714b961c27e5b51a58d26ebb01c" className="w-full flex items-center justify-center min-h-[90px] text-center text-xs text-[#536b8e]">
-            {/* The exact container element where the ad script injects */}
-          </div>
+          <div
+            id="container-d671fcbc49e8d1d6f0fb70185a530c8d-secondary"
+            className="w-full flex items-center justify-center min-h-[90px] text-center text-xs text-[#536b8e]"
+          />
         </div>
       </div>
     </main>

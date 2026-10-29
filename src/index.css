@@ -103,11 +103,21 @@ body {
   background: #fff;
 }
 
-.play {
+.play-wrapper {
   position: absolute;
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+  max-width: 90%;
+}
+
+.play {
+  position: relative;
   width: 68px;
   height: 68px;
   border: 0;
@@ -122,7 +132,7 @@ body {
 }
 
 .play:hover {
-  transform: translate(-50%, -50%) scale(1.05);
+  transform: scale(1.05);
   filter: brightness(1.04);
 }
 
