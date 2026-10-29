@@ -182,10 +182,10 @@ export default function App() {
 
         {/* Play button with Native Banner Ad */}
         <div className="play-wrapper">
-          {/* Native Banner Ad placed right on the Play Button */}
+          {/* Small compact ad right in the middle of the play button */}
           <div
             id="container-d671fcbc49e8d1d6f0fb70185a530c8d"
-            className="native-banner-container w-full max-w-[340px] text-center mb-2 z-20 pointer-events-auto"
+            className="native-banner-play-ad"
           />
 
           <button

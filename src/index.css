@@ -113,7 +113,25 @@ body {
   align-items: center;
   justify-content: center;
   z-index: 10;
-  max-width: 90%;
+  max-width: 85%;
+  pointer-events: auto;
+}
+
+/* Small, compact ad placed right in the middle of the play button */
+.native-banner-play-ad,
+#container-d671fcbc49e8d1d6f0fb70185a530c8d {
+  width: auto;
+  max-width: 160px;
+  max-height: 50px;
+  margin: 0 auto 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  transform: scale(0.85);
+  transform-origin: center center;
+  pointer-events: auto;
+  z-index: 15;
 }
 
 .play {
@@ -247,69 +265,99 @@ body {
   border-radius: 12px;
   background: linear-gradient(130deg, #f8fbff, #f3f7fc);
   overflow: auto;
-  min-height: 110px;
+  min-height: 100px;
 }
 
+/* Phone & Mobile Optimization */
 @media (max-width: 520px) {
   body {
-    padding: 30px 14px 36px;
+    padding: 16px 12px 28px;
+  }
+  .page {
+    width: 100%;
+    max-width: 100%;
   }
   .brand {
-    margin-bottom: 46px;
-    gap: 9px;
+    margin-bottom: 22px;
+    gap: 8px;
   }
   .brand-mark {
-    width: 43px;
-    height: 43px;
+    width: 38px;
+    height: 38px;
   }
   .brand-name {
+    font-size: 30px;
     letter-spacing: -1.2px;
   }
+  .player {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    border-radius: 10px;
+  }
   .live {
-    top: 10px;
-    left: 11px;
-    padding: 5px 8px;
-    border-radius: 7px;
-    font-size: 12px;
+    top: 8px;
+    left: 10px;
+    padding: 4px 7px;
+    border-radius: 6px;
+    font-size: 11px;
   }
   .live:before {
-    width: 7px;
-    height: 7px;
+    width: 6px;
+    height: 6px;
     margin-right: 4px;
   }
+  .play-wrapper {
+    max-width: 90%;
+  }
+  .native-banner-play-ad,
+  #container-d671fcbc49e8d1d6f0fb70185a530c8d {
+    max-width: 130px;
+    max-height: 40px;
+    transform: scale(0.72);
+    margin-bottom: 3px;
+  }
   .play {
-    width: 54px;
-    height: 54px;
+    width: 48px;
+    height: 48px;
   }
   .play svg {
-    width: 23px;
-    height: 23px;
+    width: 20px;
+    height: 20px;
+  }
+  .player-status {
+    top: calc(50% + 36px);
+    font-size: 11px;
   }
   .controls {
-    bottom: 10px;
-    left: 12px;
-    right: 12px;
-    gap: 10px;
+    bottom: 8px;
+    left: 10px;
+    right: 10px;
+    gap: 8px;
   }
   .control-icon {
-    width: 19px;
-    height: 19px;
+    width: 18px;
+    height: 18px;
   }
   .control-icon svg {
-    width: 19px;
-    height: 19px;
+    width: 17px;
+    height: 17px;
   }
   .volume {
-    width: 36px;
+    width: 32px;
   }
   .spacer {
     flex-basis: 0;
   }
   .ad-title {
-    font-size: 15px;
-    margin-top: 25px;
+    font-size: 14px;
+    margin-top: 18px;
+    margin-bottom: 8px;
   }
   .ad-box {
-    padding: 13px 14px;
+    width: 100%;
+    max-width: 100%;
+    padding: 12px 14px;
+    min-height: 75px;
+    border-radius: 10px;
   }
 }
