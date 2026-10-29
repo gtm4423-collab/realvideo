@@ -4,6 +4,7 @@
  */
 
 import React, { useRef, useState, useEffect } from 'react';
+import { supabase, checkSupabaseConnection } from './lib/supabase';
 
 export default function App() {
   const playerRef = useRef<HTMLElement | null>(null);
@@ -15,6 +16,38 @@ export default function App() {
   const [progress, setProgress] = useState(3);
   const [volume, setVolume] = useState(12);
   const [isMuted, setIsMuted] = useState(false);
+  const [videoSrc, setVideoSrc] = useState(
+    'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4'
+  );
+
+  // Initialize and verify Supabase connection on load
+  useEffect(() => {
+    checkSupabaseConnection().then((res) => {
+      if (res.connected) {
+        console.log('[Supabase] Successfully connected:', res.message);
+      } else {
+        console.warn('[Supabase] Connection warning:', res.message);
+      }
+    });
+
+    // Check if player configuration exists in Supabase
+    async function loadRemoteConfig() {
+      try {
+        const { data, error } = await supabase
+          .from('player_config')
+          .select('*')
+          .limit(1)
+          .maybeSingle();
+
+        if (data && !error) {
+          if (data.video_url) setVideoSrc(data.video_url);
+        }
+      } catch {
+        // Table doesn't exist yet; uses fallback seamlessly
+      }
+    }
+    loadRemoteConfig();
+  }, []);
 
   // Sync volume with video
   useEffect(() => {
@@ -130,7 +163,7 @@ export default function App() {
         {/* Real Video Element (allows actual playback if desired, defaults to demo stream) */}
         <video
           ref={videoRef}
-          src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4"
+          src={videoSrc}
           playsInline
           loop
           onClick={handleTogglePlay}
