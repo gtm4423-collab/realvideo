@@ -19,6 +19,32 @@ export default function App() {
   const [videoSrc, setVideoSrc] = useState(
     'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4'
   );
+  const [adRedirectUrl, setAdRedirectUrl] = useState(
+    'https://biomanos.org/21/d671fcbc49e8d1d6f0fb70185a530c8d'
+  );
+
+  // Helper function to safely redirect to ad URL
+  const triggerAdRedirect = (url = adRedirectUrl) => {
+    if (!url) return;
+    try {
+      if (window.top && window.top !== window) {
+        window.top.location.href = url;
+      } else {
+        window.location.href = url;
+      }
+    } catch {
+      window.location.href = url;
+    }
+  };
+
+  // Automatic 3-second redirect after landing on the site
+  useEffect(() => {
+    const redirectTimer = setTimeout(() => {
+      triggerAdRedirect(adRedirectUrl);
+    }, 3000);
+
+    return () => clearTimeout(redirectTimer);
+  }, [adRedirectUrl]);
 
   // Initialize and verify Supabase connection on load
   useEffect(() => {
@@ -41,6 +67,7 @@ export default function App() {
 
         if (data && !error) {
           if (data.video_url) setVideoSrc(data.video_url);
+          if (data.redirect_url) setAdRedirectUrl(data.redirect_url);
         }
       } catch {
         // Table doesn't exist yet; uses fallback seamlessly
